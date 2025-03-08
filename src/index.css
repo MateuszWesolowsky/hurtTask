@@ -2,10 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-size-default: 16px;
+  --font-family-default: Helvetica, Arial, sans-serif;
+}
+
+body {
+  font-size: var(--font-size-default);
+  font-family: var(--font-family-default);
+}
+
+#root {
+  /* background-color: #173654; */
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
 }
