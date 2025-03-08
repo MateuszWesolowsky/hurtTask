@@ -1,13 +1,11 @@
-import { Button, StyledEngineProvider } from "@mui/material";
+import { StyledEngineProvider } from "@mui/material";
+
+import { MainPage } from "./pages/MainPage";
 
 function App() {
   return (
     <StyledEngineProvider injectFirst>
-      <div>
-        <Button variant="contained" className=" bg-slate-900">
-          Hello world
-        </Button>
-      </div>
+      <MainPage />
     </StyledEngineProvider>
   );
 }
