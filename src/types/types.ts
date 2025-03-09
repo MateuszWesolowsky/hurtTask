@@ -16,6 +16,11 @@ export interface FetchMoviesParams {
   sortBy: string;
   genre: string;
 }
+export interface UseFetchMoviesParams {
+  debouncedSearch: string;
+  sortBy: string;
+  genre: string;
+}
 
 export interface MovieResponse {
   page: number;
@@ -26,4 +31,16 @@ export interface MovieResponse {
 export interface GenresResponse {
   id: number;
   name: string;
+}
+
+export interface MovieDetails {
+  title: string;
+  overview: string;
+  poster_path: string;
+  release_date: string;
+  runtime: number;
+  vote_average: number;
+  backdrop_path: string;
+  name: string;
+  genres: GenresResponse[];
 }
