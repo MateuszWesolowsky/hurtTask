@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const NotFoundPage = () => (
+const NotFoundPage = () => (
   <div className="flex flex-col items-center justify-center h-screen bg-gray-100 text-center w-full">
     <h1 className="text-5xl font-bold text-red-500">
       404 - Strona nie znaleziona
@@ -13,3 +13,5 @@ export const NotFoundPage = () => (
     </Link>
   </div>
 );
+
+export default NotFoundPage;
