@@ -1,12 +1,12 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { fetchMovies } from "../api/moviesApi";
-import { FetchMoviesParams } from "../types/types";
+import { UseFetchMoviesParams } from "../types/types";
 
 export const useFetchMovies = ({
   debouncedSearch,
   sortBy,
   genre,
-}: FetchMoviesParams) => {
+}: UseFetchMoviesParams) => {
   const {
     data: movies,
     isLoading,
@@ -16,6 +16,7 @@ export const useFetchMovies = ({
     isFetchingNextPage,
   } = useInfiniteQuery({
     queryKey: ["movies", debouncedSearch, sortBy, genre],
+
     queryFn: ({ pageParam = 1 }) =>
       fetchMovies({
         debouncedSearch,
@@ -23,12 +24,14 @@ export const useFetchMovies = ({
         sortBy,
         genre,
       }),
+
     getNextPageParam: (lastPage) => {
-      console.log(lastPage);
       return lastPage.page < lastPage.total_pages
         ? lastPage.page + 1
         : undefined;
     },
+
+    retry: 2,
     initialPageParam: 1,
   });
 
