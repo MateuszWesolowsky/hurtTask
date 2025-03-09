@@ -21,6 +21,7 @@ const MovieDetailPage = () => {
   }, [title]);
 
   useEffect(() => {
+    if (!details) return;
     if (details?.backdrop_path) {
       const img = new Image();
       img.src = `https://image.tmdb.org/t/p/original${details.backdrop_path}`;
@@ -28,7 +29,7 @@ const MovieDetailPage = () => {
     } else {
       setBgLoaded(true);
     }
-  }, [details?.backdrop_path]);
+  }, [details?.backdrop_path, details]);
 
   if (isLoading) {
     return <Spinner />;
