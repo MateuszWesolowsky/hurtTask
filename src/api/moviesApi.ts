@@ -13,7 +13,10 @@ export const fetchMovies = async ({
   sortBy,
   genre,
 }: FetchMoviesParams): Promise<MovieResponse> => {
-  const endpoint = debouncedSearch ? "/search/multi" : "/discover/movie";
+  const endpoint = debouncedSearch
+    ? "/search/movie"
+    : "/discover/movie?vote_count.gte=5";
+
   const { data } = await movieApi.get(`${endpoint}`, {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
@@ -25,5 +28,6 @@ export const fetchMovies = async ({
       with_genres: genre || "",
     },
   });
+
   return data;
 };
