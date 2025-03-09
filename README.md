@@ -1,4 +1,4 @@
-# Movie App (Przykładowa Nazwa)
+# Movie App
 
 Aplikacja do przeglądania filmów i ich szczegółów, wykorzystująca zewnętrzne API wymagające autoryzacji.
 
