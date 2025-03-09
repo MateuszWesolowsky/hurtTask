@@ -10,7 +10,7 @@ Aplikacja do przeglądania filmów i ich szczegółów, wykorzystująca zewnętr
 ## Instalacja
 
 1. Sklonuj repozytorium:
-   git clone https://github.com/twoj-uzytkownik/nazwa-repozytorium.git
+   git clone https://github.com/MateuszWesolowsky/hurtTask.git
 
 2. Przejdź do katalogu projektu:
    cd nazwa-repozytorium
