@@ -1,11 +1,13 @@
-import { StrictMode } from "react";
+import { lazy, StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { NotFoundPage } from "./pages/NotFoundPage.tsx";
-import { MovieDetailPage } from "./pages/MovieDetailPage.tsx";
+import { Spinner } from "./components/Spinner.tsx";
+
+const MovieDetailPage = lazy(() => import("./pages/MovieDetailPage.tsx"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage.tsx"));
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -14,11 +16,19 @@ const router = createBrowserRouter([
     path: "/",
   },
   {
-    element: <MovieDetailPage />,
+    element: (
+      <Suspense fallback={<Spinner />}>
+        <MovieDetailPage />
+      </Suspense>
+    ),
     path: "/movie/:id",
   },
   {
-    element: <NotFoundPage />,
+    element: (
+      <Suspense fallback={<Spinner />}>
+        <NotFoundPage />
+      </Suspense>
+    ),
     path: "*",
   },
 ]);
