@@ -25,6 +25,8 @@ const MovieDetailPage = () => {
       const img = new Image();
       img.src = `https://image.tmdb.org/t/p/original${details.backdrop_path}`;
       img.onload = () => setBgLoaded(true);
+    } else {
+      setBgLoaded(true);
     }
   }, [details?.backdrop_path]);
 
@@ -42,7 +44,11 @@ const MovieDetailPage = () => {
         <div
           className="h-screen w-full bg-cover bg-center flex items-center justify-center transition-opacity duration-500"
           style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/original${details.backdrop_path})`,
+            backgroundImage: `url(${
+              details.backdrop_path
+                ? `https://image.tmdb.org/t/p/original${details.backdrop_path}`
+                : "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            })`,
             opacity: bgLoaded ? 1 : 0,
           }}
         >
@@ -52,13 +58,15 @@ const MovieDetailPage = () => {
             >
               <div className="flex flex-col md:flex-row text-white p-6 rounded-lg">
                 <div className="flex-1 mt-4 md:mt-0 md:mr-6">
-                  {details.poster_path && (
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500${details?.poster_path}`}
-                      alt={details.title}
-                      className="w-full h-auto hidden md:block rounded-xl"
-                    />
-                  )}
+                  <img
+                    src={`${
+                      details.poster_path
+                        ? `https://image.tmdb.org/t/p/w500${details?.poster_path}`
+                        : "https://images.unsplash.com/photo-1509281373149-e957c6296406?q=80&w=1928&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    }`}
+                    alt={details.title}
+                    className="w-full h-auto hidden md:block rounded-xl"
+                  />
                 </div>
                 <div className="flex-1 flex flex-col">
                   <h1 className="text-3xl md:text-xl font-bold mb-4">
