@@ -13,5 +13,6 @@ export const fetchGenres = async (): Promise<GenresResponse[]> => {
       Authorization: `Bearer ${API_TOKEN}`,
     },
   });
+
   return data.genres;
 };
